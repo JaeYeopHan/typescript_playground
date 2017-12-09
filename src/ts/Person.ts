@@ -1,24 +1,33 @@
 export default class Person {
-    public _firstName: string;
-    private lastName: string;
-    private readonly age: number;
+    public _name: string;
+    private _job: string;
+    public readonly age: number;
     protected isWorking: boolean;
 
-    constructor(firstName: string, lastName: string, age: number, isWorking: boolean) {
-        this._firstName = firstName;
-        this.lastName = lastName;
+    constructor(name: string, job: string, age: number, isWorking: boolean) {
+        this._name = name;
+        this._job = job;
         this.age = age;
+        this.isWorking = isWorking;
     }
 
-    public get firstName(): string {
-        return this._firstName;
+    sayName() {
+        console.log(this.name);
     }
 
-    public set firstName(firstName: string) {
-        this._firstName = firstName;
+    get name(): string {
+        return this._name;
     }
 
-    public setFirstName(name: string): void {
-        this._firstName = name;
+    set name(name: string) {
+        this._name = name;
+    }
+
+    get job() {
+        return this._job;
+    }
+
+    set job(job: string) {
+        this._job = job;
     }
 }
