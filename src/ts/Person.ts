@@ -11,9 +11,27 @@ export default class Person {
         this.isWorking = isWorking;
     }
 
-    sayName() {
-        console.log(this.name);
+    sayName(position: string, option?: string): void;
+    sayName(position: boolean, option: string): void;
+    sayName(position: any, option: any): any {
+        if (typeof position === "string") {
+            console.log(`string type position`);
+        } else if (typeof position === "boolean") {
+            console.log(`boolean type position`)
+        } else {
+            console.log(`else`);
+        }
     }
+
+    // sayName(position: string | boolean | number): any {
+    //     if (typeof position === "string") {
+    //         console.log(`string type position`);
+    //     } else if (typeof position === "boolean") {
+    //         console.log(`boolean type position`)
+    //     } else {
+    //         console.log(`else`);
+    //     }
+    // }
 
     get name(): string {
         return this._name;
