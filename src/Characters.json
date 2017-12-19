@@ -1,0 +1,28 @@
+{
+    "users" : [
+        {
+            "id": 1,
+            "name": "Ryan",
+            "company": "kakao"
+        }, {
+            "id": 2,
+            "name": "Muzi",
+            "company": "kakao"
+        }, {
+            "id": 3,
+            "name": "Sally",
+            "company": "LINE"
+        }, {
+            "id": 4,
+            "name": "Brown",
+            "company": "LINE"
+        }, {
+            "id": 5,
+            "name": "Moon",
+            "company": "LINE"
+        }, {
+            "id": 6,
+            "name": "Kony",
+            "company": "LINE"
+        }]
+}
