@@ -1,4 +1,4 @@
-import {fetchDataParam, dataFormat} from "./interfaces";
+import {fetchDataParam, DataFormat} from "./interfaces";
 
 // export async function fetchData(param: {baseUrl: string, type: string, subject?: string}): Promise<any> {
 //     const {baseUrl, subject} = param;
@@ -18,7 +18,7 @@ export async function fetchBasic(param: {url: string}): Promise<Response> {
     return response.json();
 }
 
-export async function fetchData(param: fetchDataParam): Promise<dataFormat> {
+export async function fetchData(param: fetchDataParam): Promise<DataFormat> {
     const {baseUrl, type, subject} = param;
     const response = await fetch(`${baseUrl}/${subject}`);
     const contentType = response.headers.get("content-type");

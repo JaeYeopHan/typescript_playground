@@ -2,12 +2,18 @@ import Person from "./Person";
 import Developer from './Developer';
 import { getMonth, getYear, getRandomNumber, setSpec } from './CalendarUtils';
 import { fetchData } from "./AjaxUtils";
-import { fetchDataParam, dataFormat } from "./interfaces";
+import Weather from "./Weather";
+import { buildTimeStamp, buildTimeText, buildTime } from './TimeUtils';
+import { fetchDataParam, DataFormat } from "./interfaces";
 
 class Controller {
+    // private weather: Weather;
+
     constructor() {
         // this.test();
-        this.ajax();
+        // this.ajax();
+        // this.weather = new Weather();
+        this.time();
     }
 
     private test() {
@@ -33,15 +39,22 @@ class Controller {
         setSpec("Computer Science");
     }
 
-    private async ajax(): Promise<dataFormat> {
+    private async ajax(): Promise<DataFormat> {
         const param: fetchDataParam = {
             baseUrl: "http://localhost:3000",
             subject: "users",
             type: "application/json"
         };
-        const data: dataFormat = await fetchData(param);
+        const data: DataFormat = await fetchData(param);
         console.log(data);
         return data;
+    }
+
+    private time() {
+        console.log(buildTimeStamp(12, 33)); //1233
+        console.log(buildTimeText(12, 33)); //12시 33분
+        console.log(buildTime("12:33", buildTimeStamp)); //1233
+        console.log(buildTime("12:33", buildTimeText)); //12시 33분
     }
 }
 

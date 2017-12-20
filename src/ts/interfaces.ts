@@ -10,6 +10,15 @@ interface Character {
     company: string;
 }
 
-export interface dataFormat {
+export interface DataFormat {
     charaters: Character[];
+}
+
+export interface WeatherSpec {
+    readonly type: string;
+    amount?: number;
+}
+
+export interface TimeFunc {
+    (hour: number, minutes: number): any;
 }
