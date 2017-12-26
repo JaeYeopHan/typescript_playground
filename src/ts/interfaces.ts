@@ -22,3 +22,8 @@ export interface WeatherSpec {
 export interface TimeFunc {
     (hour: number, minutes: number): any;
 }
+
+export interface Position {
+    x: number;
+    y: number;
+}

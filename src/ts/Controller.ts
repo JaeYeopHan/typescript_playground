@@ -5,6 +5,9 @@ import { fetchData } from "./AjaxUtils";
 import Weather from "./Weather";
 import { buildTimeStamp, buildTimeText, buildTime } from './TimeUtils';
 import { fetchDataParam, DataFormat } from "./interfaces";
+import Movable from "./Movable";
+// import Dog from './Dog';
+import Car from './Car';
 
 class Controller {
     // private weather: Weather;
@@ -13,7 +16,10 @@ class Controller {
         // this.test();
         // this.ajax();
         // this.weather = new Weather();
-        this.time();
+        // this.time();
+        // this.index();
+        this.car();
+        // this.decorator();
     }
 
     private test() {
@@ -55,6 +61,28 @@ class Controller {
         console.log(buildTimeText(12, 33)); //12시 33분
         console.log(buildTime("12:33", buildTimeStamp)); //1233
         console.log(buildTime("12:33", buildTimeText)); //12시 33분
+    }
+
+    private index() {
+        interface Indexable {
+            [key: string]: any;
+        };
+        const obj: Indexable = {
+            first: 1,
+            second: 2,
+        };
+
+        Object.keys(obj).forEach((key: string) => obj[key]);
+    }
+
+    private car() {
+        const bmw: Movable = new Car(100);
+
+        bmw.move(22);
+    }
+
+    private decorator() {
+        // const dog = new Dog("candy");
     }
 }
 
