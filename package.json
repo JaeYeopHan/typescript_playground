@@ -4,6 +4,7 @@
   "description": "Playground of typescript language",
   "main": "index.js",
   "scripts": {
+    "test": "jest",
     "start": "webpack-dev-server --open"
   },
   "repository": {
@@ -20,7 +21,10 @@
   },
   "homepage": "https://github.com/JaeYeopHan/typescript_playground#readme",
   "devDependencies": {
+    "@types/jest": "^22.0.0",
     "awesome-typescript-loader": "^3.4.1",
+    "jest": "^22.0.4",
+    "ts-jest": "^22.0.0",
     "typescript": "^2.6.2",
     "webpack": "^3.10.0",
     "webpack-dev-server": "^2.9.5"
