@@ -27,3 +27,19 @@ export interface Position {
     x: number;
     y: number;
 }
+
+export interface BaseUrl {
+    baseUrl: string;
+}
+
+export interface Book {
+    name: string;
+}
+
+export interface Cup {
+    purpose: string;
+}
+
+export interface Doll {
+    name: string;
+}

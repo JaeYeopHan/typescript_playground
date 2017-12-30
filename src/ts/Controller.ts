@@ -1,25 +1,44 @@
 import Person from "./Person";
 import Developer from './Developer';
 import { getMonth, getYear, getRandomNumber, setSpec } from './CalendarUtils';
-import { fetchData } from "./AjaxUtils";
+import { fetchData, fetchDataOf } from "./AjaxUtils";
 import Weather from "./Weather";
 import { buildTimeStamp, buildTimeText, buildTime } from './TimeUtils';
-import { fetchDataParam, DataFormat } from "./interfaces";
+import { fetchDataParam, DataFormat, BaseUrl, Book, Cup, Doll } from "./interfaces";
 import Movable from "./Movable";
 // import Dog from './Dog';
 import Car from './Car';
+import Basket from "./Basket";
 
 class Controller {
     // private weather: Weather;
 
     constructor() {
-        // this.test();
+        // this.test();,
         // this.ajax();
         // this.weather = new Weather();
         // this.time();
         // this.index();
-        this.car();
+        // this.car();
         // this.decorator();
+        this.generics();
+        // this.advgenerics();
+    }
+
+    private decorator() {
+        // const dog = new Dog("candy");
+    }
+
+    private async advgenerics() {
+        const baseUrl: string = "http://localhost:3000/users";
+        const data: DataFormat = await fetchDataOf<string, DataFormat>(baseUrl);
+        console.log(data);
+    }
+
+    private generics() {
+        const bookBasket = new Basket<Book>();
+        const cupBasket = new Basket<Cup>();
+        const dollBasket = new Basket<Doll>();
     }
 
     private test() {
@@ -30,7 +49,7 @@ class Controller {
         console.log(p1.name);
 
         console.log(p1.job);
-
+        
         p1.sayName(false, "option required");
         p1.sayName("FrontEnd");
         // p1.sayName(1); // Error
@@ -79,10 +98,6 @@ class Controller {
         const bmw: Movable = new Car(100);
 
         bmw.move(22);
-    }
-
-    private decorator() {
-        // const dog = new Dog("candy");
     }
 }
 

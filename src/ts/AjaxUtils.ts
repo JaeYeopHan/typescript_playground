@@ -28,3 +28,13 @@ export async function fetchData(param: fetchDataParam): Promise<DataFormat> {
     }
     throw Error("Invalid baseUrl or subject");
 }
+
+export async function fetchDataOf<T, U>(param: T): Promise<U> {
+    const response = await fetch(`${param}`);
+    return response.json();
+}
+
+const fetchDataOff = async <T, U>(param: T): Promise<U> => {
+    const response = await fetch("");
+    return response.json();
+}
