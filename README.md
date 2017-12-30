@@ -1,8 +1,5 @@
 # [TS] TypeScript Playground 만들기
 
-<span style="color: orange;">Orange</span>
-<span color= "green">Green</span>
-
 최소한의 npm과 설정으로 TypeScript playground 만들기를 진행해보겠습니다. 사실 가장 빠른 playground 세팅은 [이 저장소](https://github.com/JaeYeopHan/typescript_playground)를 clone하면 됩니다!ㅎㅎ
 
 우선적으로 `TypeScript`님부터 모셔오도록 합시다 :)
@@ -39,8 +36,9 @@ $ touch README.md
 ```bash
 $ npm install webpack webpack-dev-server --save-dev
 $ npm install awesome-typescript-loader --save-dev
+$ npm install ts-jest @types/jest --save-dev 
 ```
-프론트엔드 개발자의 영원한 친구 `webpack`과 그 친구 `webpack-dev-server`를 설치해줍니다. 그리고 공식 문서에는 `ts-loader`를 사용하던데요, 저희는 가볍게 무시하고 `awesome-typescript-loader`를 설치해줍니다. 딱 이만큼만 설치하면 됩니다. ES6를 한 번 사용해보려고 `babel`이며 `babel-core`며 `.babelrc`파일이며 온갖 이상한 npm파일과 설정 파일을 생성한 기억이 한 번쯤은 있으실텐데요, 타입스크립트는 여기까지가 끝입니다. (행복합니다.)
+프론트엔드 개발자의 영원한 친구가 되버린 `webpack`과 그 친구 `webpack-dev-server`를 설치해줍니다. 그리고 공식 문서에는 `ts-loader`를 사용하던데요, 저희는 가볍게 무시하고 `awesome-typescript-loader`를 설치해줍니다. 딱 이만큼만 설치하면 됩니다. ES6를 한 번 사용해보려고 `babel`이며 `babel-core`며 `.babelrc`파일이며 온갖 이상한 npm파일과 설정 파일을 생성한 기억이 한 번쯤은 있으실텐데요, 타입스크립트는 여기까지가 끝입니다. (행복합니다.) 그리고 테스트를 위한 `jest`를 설치해줍니다. `@type/jest`와 함께 설치해야 합니다.
 
 ### 설정 파일 작성하기
 이제 각종 config 파일들을 작성해봅시다. 물론 설정 파일 또한 최소한으로 작성합니다.
@@ -98,6 +96,30 @@ module.exports = {
 }
 ```
 ES6를 처음 시작하던 때의 `.babelrc`파일이 기억나시나요? 그것과 비슷하다고 볼 수 있는데요, 상당히 간단합니다. 거의 모든 부분을 `awesome-typescript-loader`에서 cover하고 있고 입맛에 맞게 customize할 수 있도록 `"awesomeTypescriptLoaderOptions"`라는 이름으로 인터페이스가 열려있습니다. `"target: "es5"`옵션을 추가해서 `getter`, `setter`문법을 지원받을 수 있도록 합니다.
+
+#### jest.config.js
+```js
+module.exports = {
+  "jest": {
+    "roots": [
+      "<rootDir>/src"
+    ],
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest"
+    },
+    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json",
+      "node"
+    ]
+  }
+}
+```
+jest를 설정할 파일을 생성하고 위 내용을 입력해줍니다.
 
 </br>
 
