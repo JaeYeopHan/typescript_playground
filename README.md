@@ -1,13 +1,7 @@
----
-title: '[TS] TypeScript Playground'
-date: 2017-12-06 20:17:18
-categories: TypeScript
-tags: ts
-thumnails: /images/typescript.png
----
-![](/images/typescript.png)
-
 # [TS] TypeScript Playground 만들기
+
+<span style="color: orange;">Orange</span>
+<span color= "green">Green</span>
 
 최소한의 npm과 설정으로 TypeScript playground 만들기를 진행해보겠습니다. 사실 가장 빠른 playground 세팅은 [이 저장소](https://github.com/JaeYeopHan/typescript_playground)를 clone하면 됩니다!ㅎㅎ
 
