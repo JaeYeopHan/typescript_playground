@@ -1,28 +1,34 @@
 import { Observer } from './interfaces/index';
 
 export default class Subject {
-    private observers: Observer[];
+    private observers: Map<string, Observer>;
 
     constructor() {
-		this.observers = [];
+		this.observers = new Map();
 	}
 
-	add(observer: Observer): Subject {
-        this.observers.push(observer);
+	add(state: string, observer: Observer): Subject {
+        this.observers.set(state, observer);
         return this;
 	}
 
-	remove(observer: Observer): Subject {
-        const idx = this.observers.indexOf(observer);
-        if (idx !== -1) {
-            this.observers.slice(idx, 1);
+	remove(state: string, observer: Observer): Subject {
+        const selectedObserver = this.observers.get(state);
+        if (!selectedObserver) {
+            this.observers.delete(state);
         }
         
         return this;
 	}
 
-	notify(val?: any): Subject {
-        this.observers.forEach(observer => observer.update(val));
+	notify(state?: any, target?: any): Subject {
+        Array.from(this.observers)
+            .filter(val => val[0] === state)
+            .forEach(val => {
+                const obs: Observer = val[1] as Observer;
+
+                obs.update(target);
+            });
         return this;
 	}
 }

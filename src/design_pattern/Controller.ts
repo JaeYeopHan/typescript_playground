@@ -1,18 +1,25 @@
-import { Model } from './Model';
+import { State } from './State';
 import Header from "./components/Header";
 import Footer from './components/Footer';
 
 export default class Controller {
     constructor() {
-        console.log(`execute Controller!`);
+        // Init state
+        const state = new State({
+            title: "Observer pattern Example",
+            author: "jbee",
+            updatedData: 20170102,
+        });
 
+        // Init View Components.
         const header = new Header();
         const footer = new Footer();
-        const model = new Model();
 
-        model.add(header);
-        model.add(footer);
+        state.add("title", header);
+        state.add("author", footer);
 
-        model.change();
+        state.change();
+        state.updateTitle("new Title ");
+        state.updateAuthor("new Author");
     }
 }
