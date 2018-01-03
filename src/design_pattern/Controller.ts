@@ -5,11 +5,7 @@ import Footer from './components/Footer';
 export default class Controller {
     constructor() {
         // Initialize state
-        const state = new State({
-            title: "Observer pattern Example",
-            author: "jbee",
-            updatedDate: 20170102,
-        });
+        const state = new State();
 
         // Init View Components.
         const header = new Header();
@@ -23,7 +19,7 @@ export default class Controller {
 
         // state.update(StateKey.UPDATE_DATE, "first title");
         state
-            .update(StateKey.TITLE, "new Title1")
+            .update(StateKey.TITLE, "new Title")
             .update(StateKey.AUTHOR, "new Author")
             .update(StateKey.UPDATE_DATE, 20170102);
 

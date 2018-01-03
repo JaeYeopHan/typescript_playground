@@ -1,21 +1,21 @@
-export interface Observer {
-    update(val?: any): any;
+export interface Observer<S> {
+    invoke(val?: S): void;
 }
 
 export default class Subject<S> {
-    private observersMap: Map<S, Observer[]>;
+    private observersMap: Map<S, Observer<S>[]>;
 
     protected constructor() {
-		this.observersMap = new Map<S, Observer[]>();
+		this.observersMap = new Map<S, Observer<S>[]>();
 	}
 
-	add(state: S, observer: Observer): Subject<S> {
+	add(state: S, observer: Observer<S>): Subject<S> {
         this.observersMap.set(state, this.getObservers(state).concat(observer));
         return this;
 	}
 
-	remove(state: S, observer: Observer): Subject<S> {
-        const observers: Observer[] = this.getObservers(state);
+	remove(state: S, observer: Observer<S>): Subject<S> {
+        const observers: Observer<S>[] = this.getObservers(state);
         const idx = observers.indexOf(observer);
 
         idx !== -1 && observers.splice(idx, 1);
@@ -23,17 +23,18 @@ export default class Subject<S> {
         return this;
     }
     
-    removeAll(state: S) {
+    removeAll(state: S): Subject<S> {
         this.observersMap.delete(state);
+        return this;
     }
 
 	notify(state: string, value: any): Subject<S> {
         this.observersMap
-            .forEach((observers, key) => key.toString() === state && observers.forEach(observer => observer.update(value)));
+            .forEach((observers, key) => key.toString() === state && observers.forEach(observer => observer.invoke(value)));
         return this;
     }
     
-    private getObservers(key: S): Observer[] {
+    private getObservers(key: S): Observer<S>[] {
         return this.observersMap.get(key) || [];
     }
 }

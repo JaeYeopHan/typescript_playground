@@ -9,9 +9,13 @@ export enum StateKey {
 export class State extends Subject<StateKey> {
     private state: Object;
 
-    constructor(state: Object) {
+    constructor() {
         super();
-        this.state = state;
+        this.state = {
+            title: "Observer pattern Example",
+            author: "jbee",
+            updatedDate: 20170102,
+        };
     }
 
     update(key: StateKey, newData: any): State {
