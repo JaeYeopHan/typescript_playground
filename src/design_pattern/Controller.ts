@@ -6,9 +6,9 @@ export default class Controller {
     constructor() {
         // Initialize state
         const state = new State({
-            TITLE: "Observer pattern Example",
-            AUTHOR: "jbee",
-            UPDATE_DATE: 20170102,
+            title: "Observer pattern Example",
+            author: "jbee",
+            updatedDate: 20170102,
         });
 
         // Init View Components.
@@ -22,9 +22,10 @@ export default class Controller {
             .add(StateKey.UPDATE_DATE, footer);
 
         // state.update(StateKey.UPDATE_DATE, "first title");
-        state.update(StateKey.TITLE, "new Title1");
-        state.update(StateKey.AUTHOR, "new Author");
-        state.update(StateKey.UPDATE_DATE, 20170102);
+        state
+            .update(StateKey.TITLE, "new Title1")
+            .update(StateKey.AUTHOR, "new Author")
+            .update(StateKey.UPDATE_DATE, 20170102);
 
         state.remove(StateKey.UPDATE_DATE, header);
         // state.remove("dd", header);

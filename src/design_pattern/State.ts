@@ -14,8 +14,9 @@ export class State extends Subject<StateKey> {
         this.state = state;
     }
 
-    update(key: StateKey, newData: any) {
+    update(key: StateKey, newData: any): State {
         this.notify(key, newData);
         this.state = {...this.state, key: newData};
+        return this;
     }
 }
