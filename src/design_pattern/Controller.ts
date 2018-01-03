@@ -15,11 +15,18 @@ export default class Controller {
         const header = new Header();
         const footer = new Footer();
 
-        state.add("title", header);
-        state.add("author", footer);
+        state
+            .add("title", header)
+            .add("author", footer)
+            .add("updatedDate", header)
+            .add("updatedDate", footer);
 
-        state.change();
         state.updateTitle("new Title ");
         state.updateAuthor("new Author");
+        state.updateLatestDate(20170102);
+
+        state.remove("updatedDate", header);
+        // state.remove("dd", header);
+        state.updateLatestDate(20170103);
     }
 }

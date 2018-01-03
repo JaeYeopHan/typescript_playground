@@ -8,10 +8,6 @@ export class State extends Subject {
         this.state = state;
     }
 
-    change() {
-        this.notify();
-    }
-
     updateTitle(title: string) {
         this.notify("title", title);
     }
