@@ -6,7 +6,7 @@ import Weather from "./Weather";
 import { buildTimeStamp, buildTimeText, buildTime } from './TimeUtils';
 import { fetchDataParam, DataFormat, BaseUrl, Book, Cup, Doll } from "./interfaces";
 import Movable from "./Movable";
-// import Dog from './Dog';
+import Dog from './Dog';
 import Car from './Car';
 import Basket from "./Basket";
 
@@ -20,13 +20,13 @@ class Controller {
         // this.time();
         // this.index();
         // this.car();
-        // this.decorator();
-        this.generics();
+        // this.generics();
         // this.advgenerics();
+        this.decorator();
     }
 
     private decorator() {
-        // const dog = new Dog("candy");
+        const dog = new Dog("candy");
     }
 
     private async advgenerics() {

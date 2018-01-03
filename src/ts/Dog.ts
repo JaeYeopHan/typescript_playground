@@ -1,27 +1,26 @@
-function wrapping(target: any, key: any, descriptor: any): any {
-    console.log(target);
-    console.log(key);
-    console.log(descriptor);
+function sound(target: object, key: string, descriptor: object): any {
+    console.log(typeof target);
+    console.log(typeof key);
+    console.log(typeof descriptor);
 }
 
-function sound(target: any, key: any, descriptor: any): any {
-    console.log(target);
-    console.log(key);
-    console.log(descriptor);
+function animal(target: object, key: string, descriptor: object): any {
+    console.log(typeof target);
+    console.log(typeof key);
+    console.log(typeof descriptor);
 }
 
 class Dog {
-    // @wrapping
-    // private name: string;
+    private name: string;
 
-    // constructor(name: string) {
-    //     this.name = name;
-    // }
+    constructor(name: string) {
+        this.name = name;
+    }
 
-    // @sound
-    // bark() {
-    //     console.log(`Waall`);
-    // }
+    @sound
+    bark() {
+        console.log(`Waall`);
+    }
 
 }
 
