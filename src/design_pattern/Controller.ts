@@ -1,14 +1,14 @@
-import { State } from './State';
+import { State, StateKey } from './State';
 import Header from "./components/Header";
 import Footer from './components/Footer';
 
 export default class Controller {
     constructor() {
-        // Init state
+        // Initialize state
         const state = new State({
-            title: "Observer pattern Example",
-            author: "jbee",
-            updatedData: 20170102,
+            TITLE: "Observer pattern Example",
+            AUTHOR: "jbee",
+            UPDATE_DATE: 20170102,
         });
 
         // Init View Components.
@@ -16,17 +16,18 @@ export default class Controller {
         const footer = new Footer();
 
         state
-            .add("title", header)
-            .add("author", footer)
-            .add("updatedDate", header)
-            .add("updatedDate", footer);
+            .add(StateKey.TITLE, header)
+            .add(StateKey.AUTHOR, footer)
+            .add(StateKey.UPDATE_DATE, header)
+            .add(StateKey.UPDATE_DATE, footer);
 
-        state.updateTitle("new Title ");
-        state.updateAuthor("new Author");
-        state.updateLatestDate(20170102);
+        // state.update(StateKey.UPDATE_DATE, "first title");
+        state.update(StateKey.TITLE, "new Title1");
+        state.update(StateKey.AUTHOR, "new Author");
+        state.update(StateKey.UPDATE_DATE, 20170102);
 
-        state.remove("updatedDate", header);
+        state.remove(StateKey.UPDATE_DATE, header);
         // state.remove("dd", header);
-        state.updateLatestDate(20170103);
+        state.update(StateKey.UPDATE_DATE, 20170103);
     }
 }

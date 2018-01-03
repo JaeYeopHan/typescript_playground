@@ -1,7 +1,7 @@
-import { Observer } from '../interfaces/index';
+import { Observer } from '../Subject';
 
 export default class Footer implements Observer {
-    update(val: any = 'no value') {
+    public update(val: any = 'no value') {
         console.log(`Footer Update:: ${val}`);
     };
 }

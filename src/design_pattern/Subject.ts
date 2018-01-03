@@ -1,40 +1,39 @@
-import { Observer } from './interfaces/index';
+export interface Observer {
+    update(val?: any): any;
+}
 
-export default class Subject {
-    private observersMap: Map<string, Observer[]>;
+export default class Subject<S> {
+    private observersMap: Map<S, Observer[]>;
 
     protected constructor() {
-		this.observersMap = new Map<string, Observer[]>();
+		this.observersMap = new Map<S, Observer[]>();
 	}
 
-	add(state: string, observer: Observer): Subject {
+	add(state: S, observer: Observer): Subject<S> {
         this.observersMap.set(state, this.getObservers(state).concat(observer));
         return this;
 	}
 
-	remove(state: string, observer: Observer): Subject {
+	remove(state: S, observer: Observer): Subject<S> {
         const observers: Observer[] = this.getObservers(state);
+        const idx = observers.indexOf(observer);
 
-        if (observers.length !== 0) {
-            const idx = observers.indexOf(observer);
-
-            idx !== -1 && observers.splice(idx, 1);
-        }
+        idx !== -1 && observers.splice(idx, 1);
         
         return this;
     }
     
-    removeAll(state: string) {
+    removeAll(state: S) {
         this.observersMap.delete(state);
     }
 
-	notify(state: string, value: any): Subject {
+	notify(state: string, value: any): Subject<S> {
         this.observersMap
-            .forEach((observers, key) => key === state && observers.forEach(observer => observer.update(value)));
+            .forEach((observers, key) => key.toString() === state && observers.forEach(observer => observer.update(value)));
         return this;
     }
     
-    private getObservers(key: string): Observer[] {
+    private getObservers(key: S): Observer[] {
         return this.observersMap.get(key) || [];
     }
 }

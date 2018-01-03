@@ -1,7 +1,7 @@
-import { Observer } from '../interfaces/index';
+import { Observer } from '../Subject';
 
-export default class Header {
-    update(val: any = 'no value') {
+export default class Header implements Observer {
+    public update(val: any = 'no value') {
         console.log(`Hedaer Update:: ${val}`);
     };
 }

@@ -1,6 +1,12 @@
 import Subject from './Subject';
 
-export class State extends Subject {
+export enum StateKey {
+    TITLE = "title",
+    AUTHOR = "author",
+    UPDATE_DATE = "updatedDate",
+}
+
+export class State extends Subject<StateKey> {
     private state: Object;
 
     constructor(state: Object) {
@@ -8,15 +14,8 @@ export class State extends Subject {
         this.state = state;
     }
 
-    updateTitle(title: string) {
-        this.notify("title", title);
-    }
-
-    updateAuthor(authorName: string) {
-        this.notify("author", authorName);
-    }
-
-    updateLatestDate(updatedDate: number) {
-        this.notify("updatedDate", updatedDate);
+    update(key: StateKey, newData: any) {
+        this.notify(key, newData);
+        this.state = {...this.state, key: newData};
     }
 }
