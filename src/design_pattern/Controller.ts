@@ -5,7 +5,11 @@ import Footer from './components/Footer';
 export default class Controller {
     constructor() {
         // Initialize state
-        const state = new State();
+        const state = new State({
+            title: "Observer pattern Example",
+            author: "jbee",
+            updatedDate: 20170102,
+        });
 
         // Init View Components.
         const header = new Header();
