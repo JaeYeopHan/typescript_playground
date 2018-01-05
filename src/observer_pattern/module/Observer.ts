@@ -2,7 +2,7 @@ export interface Observer<S> {
     invoke(val?: S): void;
 }
 
-export default class Subject<S> {
+export class Subject<S> {
     private observersMap: Map<S, Observer<S>[]>;
 
     protected constructor() {
