@@ -2,6 +2,10 @@ export interface Observer<S> {
     invoke(val?: S): void;
 }
 
+export interface Indexable {
+    [key: string]: any;
+}
+
 export class Subject<S> {
     private observersMap: Map<S, Observer<S>[]>;
 
@@ -31,6 +35,12 @@ export class Subject<S> {
 	notify(state: string, value: any): Subject<S> {
         this.observersMap
             .forEach((observers, key) => key.toString() === state && observers.forEach(observer => observer.invoke(value)));
+        return this;
+    }
+
+    notifyAll(): Subject<S> {
+        this.observersMap
+            .forEach((observers, key) => observers.forEach(observer => observer.invoke(key)));
         return this;
     }
     
