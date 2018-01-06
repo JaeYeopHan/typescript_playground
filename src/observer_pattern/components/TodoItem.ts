@@ -2,7 +2,7 @@ import { Observer } from '../module/Observer';
 import { StateKey, State } from '../State';
 
 export default class TodoItem implements Observer<StateKey> {
-    private props: State;
+    private readonly props: State;
 
     constructor(props: State) {
         this.props = props;

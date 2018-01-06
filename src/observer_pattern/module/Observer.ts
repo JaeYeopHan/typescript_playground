@@ -6,20 +6,20 @@ export interface Indexable {
     [key: string]: any;
 }
 
-export class Subject<S> {
-    private observersMap: Map<S, Observer<S>[]>;
+export class Subject<SK, I extends Indexable> {
+    private observersMap: Map<SK, Observer<SK>[]>;
 
     protected constructor() {
-		this.observersMap = new Map<S, Observer<S>[]>();
+		this.observersMap = new Map<SK, Observer<SK>[]>();
 	}
 
-	add(state: S, observer: Observer<S>): Subject<S> {
-        this.observersMap.set(state, this.getObservers(state).concat(observer));
+	connect(stateKey: SK, observer: Observer<SK>): Subject<SK, I> {
+        this.observersMap.set(stateKey, this.getObservers(stateKey).concat(observer));
         return this;
 	}
 
-	remove(state: S, observer: Observer<S>): Subject<S> {
-        const observers: Observer<S>[] = this.getObservers(state);
+	remove(stateKey: SK, observer: Observer<SK>): Subject<SK, I> {
+        const observers: Observer<SK>[] = this.getObservers(stateKey);
         const idx = observers.indexOf(observer);
 
         idx !== -1 && observers.splice(idx, 1);
@@ -27,24 +27,24 @@ export class Subject<S> {
         return this;
     }
     
-    removeAll(state: S): Subject<S> {
-        this.observersMap.delete(state);
+    removeAll(stateKey: SK): Subject<SK, I> {
+        this.observersMap.delete(stateKey);
         return this;
     }
 
-	notify(state: string, value: any): Subject<S> {
+	notify(stateKey: SK, value: any): Subject<SK, I> {
         this.observersMap
-            .forEach((observers, key) => key.toString() === state && observers.forEach(observer => observer.invoke(value)));
+            .forEach((observers, key) => key === stateKey && observers.forEach(observer => observer.invoke(value)));
         return this;
     }
 
-    notifyAll(): Subject<S> {
+    notifyAll(state: I): Subject<SK, I> {
         this.observersMap
-            .forEach((observers, key) => observers.forEach(observer => observer.invoke(key)));
+            .forEach((observers, key) => observers.forEach(observer => observer.invoke(state[key.toString()])));
         return this;
     }
     
-    private getObservers(key: S): Observer<S>[] {
+    private getObservers(key: SK): Observer<SK>[] {
         return this.observersMap.get(key) || [];
     }
 }
