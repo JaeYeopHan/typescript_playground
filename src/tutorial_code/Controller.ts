@@ -27,6 +27,9 @@ class Controller {
 
     private decorator() {
         const dog = new Dog("candy");
+
+        dog.bark("dd").bark("aa");
+        console.log(dog.newProperty);
     }
 
     private async advgenerics() {
