@@ -6,9 +6,10 @@ import Weather from "./Weather";
 import { buildTimeStamp, buildTimeText, buildTime } from './TimeUtils';
 import { fetchDataParam, DataFormat, BaseUrl, Book, Cup, Doll } from "./interfaces";
 import Movable from "./Movable";
-import Dog from './Dog';
+// import Dog from './Dog';
 import Car from './Car';
 import Basket from "./Basket";
+import advTypes from "./adv_types";
 
 class Controller {
     // private weather: Weather;
@@ -22,14 +23,15 @@ class Controller {
         // this.car();
         // this.generics();
         // this.advgenerics();
-        this.decorator();
+        // this.decorator();
+        advTypes();
     }
 
     private decorator() {
-        const dog = new Dog("candy");
+        // const dog = new Dog("candy");
 
-        dog.bark("dd").bark("aa");
-        console.log(dog.newProperty);
+        // dog.bark("dd").bark("aa");
+        // console.log(dog.newProperty);
     }
 
     private async advgenerics() {
