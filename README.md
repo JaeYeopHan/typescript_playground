@@ -14,8 +14,14 @@ $ mkdir typescript_playground && cd typescript_playground
 $ npm init
 # set configuration of npm
 ```
+npm scripts를 하나 추가해줍니다.
+```json package.json
+"start": "webpack-dev-server --open"
+```
 
-transpiler를 태울 webpack이 필요한데 그 config파일과 TypeScript 설정파일인 `tsconfig.json`파일을 생성해줍니다. 그리고 타입스크립트 문법을 익히기 위해 tslint를 사용할건데 tslint 설정 파일인 `tslint.json`파일도 생성합니다.
+</br>
+
+transpiler를 태울 webpack이 필요한데 그 config파일과 TypeScript 설정파일인 `tsconfig.json`파일을 생성해줍니다.
 ```bash
 $ touch webpack.config.js tsconfig.json
 $ touch index.html
