@@ -13,7 +13,7 @@ import advTypes from "./adv_types";
 
 class Controller {
     // private weather: Weather;
-
+    private a = 1;
     constructor() {
         // this.test();,
         // this.ajax();
@@ -24,7 +24,12 @@ class Controller {
         // this.generics();
         // this.advgenerics();
         // this.decorator();
-        advTypes();
+        // advTypes();
+        this.temp();
+    }
+
+    private temp() {
+        console.log(this.a);
     }
 
     private decorator() {

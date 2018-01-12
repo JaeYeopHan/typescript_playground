@@ -23,19 +23,17 @@ export default class TodoContainer {
         state
             .connect(StateKey.TITLE, header)
             .connect(StateKey.AUTHOR, footer)
-            .connect(StateKey.UPDATE_DATE, header)
-            .connect(StateKey.UPDATE_DATE, footer);
+            .connect(StateKey.UPDATED_DATE, header)
+            .connect(StateKey.UPDATED_DATE, footer);
 
         state
             .dispatch(StateKey.TITLE, "new Title")
             .dispatch(StateKey.AUTHOR, "new Author")
             .dispatch(StateKey.TITLE)
-            .dispatch(StateKey.UPDATE_DATE, 20170102);
+            .dispatch(StateKey.UPDATED_DATE, 20170102);
 
-        state.remove(StateKey.UPDATE_DATE, header);
+        state.remove(StateKey.UPDATED_DATE, header);
         // state.remove("dd", header);
-        state.dispatch(StateKey.UPDATE_DATE, 20170103);
-
-        state.refresh();
+        state.dispatch(StateKey.UPDATED_DATE, 20170103);
     }
 }

@@ -4,7 +4,7 @@ import { Subject, Indexable } from './module/Observer';
 export const enum StateKey {
     TITLE = "title",
     AUTHOR = "author",
-    UPDATE_DATE = "updatedDate",
+    UPDATED_DATE = "updatedDate",
 }
 
 export interface StateInterface extends Indexable {
@@ -34,10 +34,5 @@ export class State extends Subject<StateKey, StateInterface> {
     forcedUpdate(key: StateKey, newData?: string | number): State {
         this.state = {...this.state, ...{[key]: newData}};
         return this;
-    }
-
-    refresh() {
-        this.notifyAll(this.state);
-        console.log(this.state);
     }
 }
